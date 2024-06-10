@@ -1,27 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: skhairul <skhairul@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/05 18:00:06 by skhairul          #+#    #+#             */
-/*   Updated: 2024/06/08 11:03:33 by skhairul         ###   ########.fr       */
+/*   Created: 2024/06/08 14:25:02 by skhairul          #+#    #+#             */
+/*   Updated: 2024/06/10 18:40:04 by skhairul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-//#include "libft.h"
+#include "libft.h"
 
-/* @function	ft_strlen
- * @brief		Compute the length of the string
- * @return		Total length of the string
+/* @function	ft_memcpy
+ * @params		dest: dest obj, src: source object, len: no of bytes to copy
+ * @brief		Copies n bytes from src to dest. If dest and src overlap,
+ * 				behaviour is undefined.
+ * @return		Returns the original value of dest
  */
-int	ft_strlen(const char *s)
+void	*ft_memcpy(void *dest, void *src, size_t n)
 {
-	int	i;
+	char	*buffer;
 
-	i = 0;
-	while (s[i])
-		i++;
-	return (i);
+	buffer = (char *)dest;
+	while (n--)
+		*buffer++ = *(char *)src++;
+	return (dest);
 }

@@ -1,27 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   test.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: skhairul <skhairul@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/05 18:00:06 by skhairul          #+#    #+#             */
-/*   Updated: 2024/06/08 11:03:33 by skhairul         ###   ########.fr       */
+/*   Created: 2024/06/08 11:43:52 by skhairul          #+#    #+#             */
+/*   Updated: 2024/06/08 15:27:06 by skhairul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-//#include "libft.h"
+#ifndef TEST_H
+#define TEST_H
 
-/* @function	ft_strlen
- * @brief		Compute the length of the string
- * @return		Total length of the string
- */
-int	ft_strlen(const char *s)
+// STRUCTS
+typedef struct
 {
-	int	i;
+	char name[256];
+	int age;
+} Student;
 
-	i = 0;
-	while (s[i])
-		i++;
-	return (i);
-}
+// TEST FUNCTIONS PROTOTYPES
+
+void	test_strlen(char *s);
+void	test_atoi(char *s);
+void	test_memcpy(char *s);
+
+#endif
