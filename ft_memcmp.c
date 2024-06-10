@@ -6,7 +6,7 @@
 /*   By: skhairul <skhairul@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/10 20:52:14 by skhairul          #+#    #+#             */
-/*   Updated: 2024/06/10 21:59:42 by skhairul         ###   ########.fr       */
+/*   Updated: 2024/06/10 22:16:58 by skhairul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,20 +19,17 @@
  */
 int	ft_memcmp(const void *s1, const void *s2, size_t n)
 {
-	size_t	i;
 	char *str1 = (char *)s1;
 	char *str2 = (char *)s2;
 
-	i = 0;
-	while (i < n)
+	while (n--)
 	{
-		if (str1[i] != str2[i])
-			return (str1[i] - str2[i]);
-		i++;
+		if (*str1++ != *str2++)
+			return (*--str1 - *--str2);
 	}
 	return (0);
 }
-
+/*
 #include <stdio.h>
 #include <string.h>
 
@@ -44,7 +41,7 @@ int main () {
    memcpy(str1, "abcdef", 6);
    memcpy(str2, "abcDef", 6);
 
-   ret = memcmp(str1, str2, 4);
+   ret = ft_memcmp(str1, str2, 4);
 
    if(ret > 0) {
       printf("str2 is less than str1");
@@ -55,4 +52,4 @@ int main () {
    }
 
    return(0);
-}
+}*/
