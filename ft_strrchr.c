@@ -1,32 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: skhairul <skhairul@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/10 22:22:05 by skhairul          #+#    #+#             */
-/*   Updated: 2024/06/10 22:45:36 by skhairul         ###   ########.fr       */
+/*   Created: 2024/06/14 18:19:51 by skhairul          #+#    #+#             */
+/*   Updated: 2024/06/14 18:19:53 by skhairul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-/* @function	ft_strchr
- * @params		s: string given, c: character to search for
- * @brief		Locate the first occurrence of c in the string pointed to by s
- * @return		A pointer to the first occurrence of c in the string s
+/* @function    ft_strrchr
+ * @params      s: string given, c: character to look for
+ * @brief       Find the last occurrence of c in s
+ * @return      A pointer to the first occurrence of c in the string s
  * 				NULL if c is not found
  */
-char	*ft_strchr(const char *s, int c)
+char	*ft_strrchr(char *s, int c)
 {
+	char	*last_c;
+
+	last_c = NULL;
 	while (*s)
 	{
-		if (*s == c)
-			return ((char *)s);
+		if (*s == (char)c)
+			last_c = s;
 		s++;
 	}
-	return (NULL);
+	return (last_c);
 }
 /*
 #include <stdio.h>
@@ -34,11 +37,11 @@ char	*ft_strchr(const char *s, int c)
 
 int main () {
   char buffer1[50] = "computer program";
-  char * ptr;
+  char *ptr;
   int    ch = 'p';
  
-  ptr = ft_strchr( buffer1, ch );
-  printf( "The first occurrence of %c in '%s' is '%s'\n",
+  ptr = ft_strrchr( buffer1, ch );
+  printf( "The last occurrence of %c in '%s' is '%s'\n",
             ch, buffer1, ptr );
 
    return(0);
