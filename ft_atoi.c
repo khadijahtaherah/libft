@@ -36,3 +36,23 @@ int	ft_atoi(const char *str)
 	}
 	return (sign * result);
 }
+/*
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+int main () {
+   int val;
+   char str[20];
+   
+   strcpy(str, "2147483648");
+   val = atoi(str);
+   printf("String value = %s, Int value = %d\n", str, val);
+
+   strcpy(str, "tutorialspoint.com");
+   val = ft_atoi(str);
+   printf("String value = %s, Int value = %d\n", str, val);
+
+   return(0);
+}
+*/
