@@ -10,13 +10,13 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-//#include "libft.h"
+#include "libft.h"
 
 /* @function	ft_strlen
  * @brief		Compute the length of the string
  * @return		Total length of the string
  */
-int	ft_strlen(const char *s)
+size_t	ft_strlen(const char *s)
 {
 	int	i;
 
