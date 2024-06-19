@@ -15,6 +15,8 @@
 /* @function    ft_strdup - save a copy of string
  * @params      s1: original string
  * @brief       Allocates sufficient memory for a copy of s1. Does the copy.
+ *              The difference with strcpy is that strdup allocates memory for
+ *              the copied string.
  * @return      Return a pointer to the copy. The pointer may subsequently be 
  *              used as an argument to the function free(3). If insufficient 
  *              memory, NULL is returned and errno is set to ENOMEM.
@@ -30,8 +32,7 @@ char    *ft_strdup(const char *s1)
         return NULL;
     return ((char *)ft_memcpy(copy, (char *)s1, len));
 }
-#include<stdio.h>
-#include<string.h>
+
 /*
 int main()
 {
