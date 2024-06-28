@@ -6,7 +6,7 @@
 /*   By: skhairul <skhairul@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/28 20:20:17 by skhairul          #+#    #+#             */
-/*   Updated: 2024/06/28 20:51:02 by skhairul         ###   ########.fr       */
+/*   Updated: 2024/06/28 21:01:40 by skhairul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,6 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	char	*temp;
 	size_t	len;
 
-	if (!s1 || !s2)
-		return (NULL);
 	len = ft_strlen(s1) + ft_strlen(s2);
 	result = malloc((len + 1) * sizeof(char));
 	if (!result)
@@ -38,3 +36,12 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	*temp = '\0';
 	return (result);
 }
+/*
+int main()
+{
+	char *s1 = "";
+	char *s2 = "";
+
+	printf("%s\n", ft_strjoin(s1, s2));
+	return (0);
+}*/
