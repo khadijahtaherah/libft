@@ -18,7 +18,7 @@
  * 				behaviour is undefined.
  * @return		Returns the original value of dest
  */
-void	*ft_memcpy(void *dest, void *src, size_t n)
+void	*ft_memcpy(void *dest, const void *src, size_t n)
 {
 	char	*buffer;
 

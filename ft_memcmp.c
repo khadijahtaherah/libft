@@ -19,11 +19,11 @@
  */
 int	ft_memcmp(const void *s1, const void *s2, size_t n)
 {
-	char	*str1;
-	char	*str2;
+	unsigned char	*str1;
+	unsigned char	*str2;
 
-	str1 = (char *)s1;
-	str2 = (char *)s2;
+	str1 = (unsigned char *)s1;
+	str2 = (unsigned char *)s2;
 	while (n--)
 	{
 		if (*str1++ != *str2++)
@@ -40,17 +40,17 @@ int main () {
    char str2[15];
    int ret;
 
-   memcpy(str1, "abcdef", 6);
-   memcpy(str2, "abcDef", 6);
+   memcpy(str1, "abcDef", 6);
+   memcpy(str2, "abcdef", 6);
 
    ret = ft_memcmp(str1, str2, 4);
 
    if(ret > 0) {
-      printf("str2 is less than str1");
+      printf("str2 is less than str1, ret: %d\n", ret);
    } else if(ret < 0) {
-      printf("str1 is less than str2");
+      printf("str1 is less than str2, ret: %d\n", ret);
    } else {
-      printf("str1 is equal to str2");
+      printf("str1 is equal to str2, ret: %d\n", ret);
    }
 
    return(0);
