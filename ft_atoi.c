@@ -15,7 +15,7 @@
  * @brief		Converts string pointed by str to int
  * @return		Int type of the str. For invalid conversion, return zero
  */
-int	ft_atoi(const char *str)
+int	ft_atoi(char *str)
 {
 	int	i;
 	int	sign;
@@ -23,6 +23,9 @@ int	ft_atoi(const char *str)
 
 	i = 0;
 	sign = 1;
+	result = 0;
+	while (str[i] == ' ' || (str[i] >= 9 && str[i] <= 13))
+		i++;
 	if (str[i] == '-' || str[i] == '+')
 	{
 		if (str[i] == '-')
