@@ -21,11 +21,11 @@
  				If needle are not found, return NULL. If needle is found, 
 				return pointer to the first occurrence of char of needle.
  */
-
 char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 {
 	char		*start;
 	const char	*temp;
+	size_t		current_len;
 
 	if (*needle == '\0')
 		return ((char *)haystack);
@@ -35,6 +35,7 @@ char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 		{
 			start = (char *)haystack;
 			temp = haystack;
+			current_len = len;
 			while (*temp == *needle && len)
 			{
 				temp++;
@@ -44,6 +45,7 @@ char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 					return (start);
 			}
 			needle -= temp - start;
+			len = current_len;
 		}
 		haystack++;
 		len--;
@@ -55,12 +57,12 @@ char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 #include <string.h>
 
 int main() {
-    char haystack[] = "hello world";
-    char needle[] = "world";
+    char haystack[] = "aaabcabcd";
+    char needle[] = "abcd";
     size_t len = strlen(haystack); // Get the length of haystack
     
     // Test 1: Search for "world" within "hello world"
-    char *result = ft_strnstr(haystack, needle, len);
+    char *result = ft_strnstr(haystack, needle, 9);
     if (result != NULL) {
         printf("Found '%s' in '%s'\n", needle, haystack);
     } else {
@@ -76,6 +78,5 @@ int main() {
     } else {
         printf("Unexpected result: '%s' found in '%s'\n", needle, haystack2);
     }
-
     return 0;
 }*/
