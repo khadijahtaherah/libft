@@ -10,7 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include "libft.h"
 
 /* @function    ft_substr: extract substring from a string
@@ -20,28 +19,28 @@
                 The substr begins at index ’start’ and is of max size ’len’.
  * @return      The substr. NULL if allocation fails
  */
-char    *ft_substr(char const *s, unsigned int start, size_t len)
+char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
-    char    *substring;
+	char	*substring;
 
-    if (!s)
-        return (NULL);
-    if (start > ft_strlen(s))
-        return (ft_strdup(""));
-    if (len > ft_strlen(s + start))
-        len = ft_strlen(s + start);
-    substring = malloc((len + 1) * sizeof(char));
-    if (!substring)
-        return (NULL);
-    ft_memcpy(substring, s + start, len);
-    substring[len] = '\0';
-    return (substring);
+	if (!s)
+		return (NULL);
+	if (start > ft_strlen(s))
+		return (ft_strdup(""));
+	if (len > ft_strlen(s + start))
+		len = ft_strlen(s + start);
+	substring = malloc((len + 1) * sizeof(char));
+	if (!substring)
+		return (NULL);
+	ft_memcpy(substring, s + start, len);
+	substring[len] = '\0';
+	return (substring);
 }
 /*
 int main()
 {
     char *s = "good morning";
-    printf("%s, len: %zu\n", ft_substr(s, 5, 10), ft_strlen(ft_substr(s, 5, 10)));
+    printf("%s", ft_substr(s, 5, 10));
 
     const char *originalString = "Hello, World!";
 

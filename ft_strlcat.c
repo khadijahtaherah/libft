@@ -21,27 +21,25 @@
  *              If return value >= dstsize, the resulted string has been 
  *              truncated.
  */
-size_t  ft_strlcat(char *dest, const char *src, size_t dstsize)
+size_t	ft_strlcat(char *dest, const char *src, size_t dstsize)
 {
-    size_t  src_len;
-    size_t  dest_len;
+	size_t	src_len;
+	size_t	dest_len;
 
-    src_len = ft_strlen(src);
-    dest_len = ft_strlen(dest);
-
-    if (dest_len >= dstsize)
-        dest_len = dstsize;
-    if (dest_len == dstsize)
-        return (dstsize + src_len);
-    if (src_len < dstsize - dest_len)
-        ft_memcpy(dest + dest_len, (char *)src, src_len + 1);
-    else
-    {
-        ft_memcpy(dest + dest_len, (char *)src, dstsize - dest_len - 1);
-        dest[dstsize - 1] = '\0';
-    }
-
-    return (dest_len + src_len);
+	src_len = ft_strlen(src);
+	dest_len = ft_strlen(dest);
+	if (dest_len >= dstsize)
+		dest_len = dstsize;
+	if (dest_len == dstsize)
+		return (dstsize + src_len);
+	if (src_len < dstsize - dest_len)
+		ft_memcpy(dest + dest_len, (char *)src, src_len + 1);
+	else
+	{
+		ft_memcpy(dest + dest_len, (char *)src, dstsize - dest_len - 1);
+		dest[dstsize - 1] = '\0';
+	}
+	return (dest_len + src_len);
 }
 /*
 #include <stdio.h>
@@ -54,19 +52,18 @@ int main() {
     // Test case 1: Normal operation
     size_t result = ft_strlcat(dest, src, sizeof(dest));
     printf("Concatenated string: %s\n", dest);
-    printf("Return value: %zu\n", result);  // Should be length of concatenated string
+    printf("Return value: %zu\n", result);  
 
     // Test case 2: Buffer is just big enough
     char small_dest[14] = "Hello, ";
     size_t result_small = ft_strlcat(small_dest, src, sizeof(small_dest));
     printf("Concatenated string (small buffer): %s\n", small_dest);
-    printf("Return value (small buffer): %zu\n", result_small);  // Should be length of concatenated string
+    printf("Return value (small buffer): %zu\n", result_small); 
 
     // Test case 3: Destination buffer is too small
     char tiny_dest[7] = "Hello, ";
     size_t result_tiny = ft_strlcat(tiny_dest, src, sizeof(tiny_dest));
     printf("Concatenated string (tiny buffer): %s\n", tiny_dest);
-    printf("Return value (tiny buffer): %zu\n", result_tiny);  // Should be length of concatenated string
-
+    printf("Return value (tiny buffer): %zu\n", result_tiny);  
     return 0;
 }*/

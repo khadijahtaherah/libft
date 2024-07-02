@@ -36,11 +36,8 @@ char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 			start = (char *)haystack;
 			temp = haystack;
 			current_len = len;
-			while (*temp == *needle && len)
+			while (*temp++ == *needle++ && len--)
 			{
-				temp++;
-				needle++;
-				len--;
 				if (*needle == '\0')
 					return (start);
 			}

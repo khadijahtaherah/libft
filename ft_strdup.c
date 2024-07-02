@@ -21,18 +21,17 @@
  *              used as an argument to the function free(3). If insufficient 
  *              memory, NULL is returned and errno is set to ENOMEM.
  */
-char    *ft_strdup(const char *s1)
+char	*ft_strdup(const char *s1)
 {
-    size_t  len;
-    char *copy;
-    
-    len = ft_strlen(s1) + 1;
-    copy = malloc(sizeof(char) * len);
-    if (copy == NULL)
-        return NULL;
-    return ((char *)ft_memcpy(copy, (char *)s1, len));
-}
+	size_t	len;
+	char	*copy;
 
+	len = ft_strlen(s1) + 1;
+	copy = malloc(sizeof(char) * len);
+	if (copy == NULL)
+		return (NULL);
+	return ((char *)ft_memcpy(copy, (char *)s1, len));
+}
 /*
 int main()
 {
