@@ -15,7 +15,9 @@
 /* @function	ft_memcpy
  * @params		dest: dest obj, src: source object, len: no of bytes to copy
  * @brief		Copies n bytes from src to dest. If dest and src overlap,
- * 				behaviour is undefined.
+ * 				behaviour is undefined. The memory areas should not overlap, 
+ 				and the function does not stop if it encounters a null char.
+				It's often used for copying arrays or structures.
  * @return		Returns the original value of dest
  */
 void	*ft_memcpy(void *dest, const void *src, size_t n)
