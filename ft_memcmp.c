@@ -14,7 +14,8 @@
 
 /* @function	ft_memcmp
  * @params		s1: string 1, s2: string 2, n: no of bytes to compare
- * @brief		Compare the first n bytes of s1 and s2
+ * @brief		Compare the first n bytes of s1 and s2. Works on raw memory and
+               does not stop when reach '\0'.
  * @return		If s1 == s2, return ZERO. Otherwise return s1 - s2.
  */
 int	ft_memcmp(const void *s1, const void *s2, size_t n)
