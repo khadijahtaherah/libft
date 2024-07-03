@@ -15,7 +15,9 @@
 /* @function	ft_memchr
  * @params		s: string given, c: char to look for, n: no of bytes
  * @brief		Locate the first occurrence of c (unsigned char) in the first
- * 				n bytes in the string pointed by s
+ * 				n bytes in the string pointed by s. Works on raw memory and it 
+                doesn't stop if it encounters a null character, it just treats
+                it as another character to check.
  * @return		A pointer to the matching byte or NULL if c does not occur
  */
 void	*ft_memchr(const void *s, int c, size_t n)
