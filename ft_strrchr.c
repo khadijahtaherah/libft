@@ -14,7 +14,8 @@
 
 /* @function    ft_strrchr
  * @params      s: string given, c: character to look for
- * @brief       Find the last occurrence of c in s
+ * @brief       Find the last occurrence of c in s. Stop searching when reach
+				'\0'.
  * @return      A pointer to the first occurrence of c in the string s
  * 				NULL if c is not found
  */
