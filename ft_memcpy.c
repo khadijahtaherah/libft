@@ -29,3 +29,8 @@ void	*ft_memcpy(void *dest, const void *src, size_t n)
 		*buffer++ = *(char *)src++;
 	return (dest);
 }
+
+/* see this for explanation on overlapping condition:
+https://stackoverflow.com/questions/43088070/meaning-of-overlapping-
+when-using-memcpy
+*/
