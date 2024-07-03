@@ -32,6 +32,7 @@ int	isset(char const *set, int c)
 char    *ft_strtrim(char const *s1, char const *set)
 {
     char    *trim;
+    char    *ptr;
     int        i;
     
     trim = malloc((strlen(s1) + 1) * sizeof(char));
@@ -40,6 +41,7 @@ char    *ft_strtrim(char const *s1, char const *set)
     strcpy(trim, s1);
     while (isset(set, *trim))
         trim++;
+    ptr = trim;
     i = strlen(trim) - 1;
     trim = trim + i;
     while (isset(set, *trim))
@@ -49,8 +51,7 @@ char    *ft_strtrim(char const *s1, char const *set)
     }
     trim++;
     *trim = '\0';
-    trim = trim - i - 1;
-    return (trim);
+    return (ptr);
 }
 /*
 int main()
