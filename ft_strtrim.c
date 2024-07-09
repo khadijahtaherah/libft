@@ -20,30 +20,24 @@
  */
 char	*ft_strtrim(char const *s1, char const *set)
 {
-	char	*source;
 	char	*trim;
-	int		i;
-	int		j;
-	int		k;
+	char	*ptr;
+	char	*start;
+	char	*end;
 
-	source = malloc((ft_strlen(s1) + 1) * sizeof(char));
-	if (!source)
-		return (NULL);
-	ft_strlcpy(source, s1, ft_strlen(s1) + 1);
-	i = 0;
-	while (isset(set, source[i]))
-		i++;
-	j = ft_strlen(source) - 1;
-	while (j >= i && isset(set, source[j]))
-		j--;
-	trim = malloc((j - i + 2) * sizeof(char));
+	start = (char *)s1;
+	while (*start && isset(set, *start))
+		start++;
+	end = (char *)s1 + ft_strlen(s1) - 1;
+	while (end >= start && isset(set, *end))
+		end--;
+	trim = malloc((end - start + 2) * sizeof(char));
 	if (!trim)
 		return (NULL);
-	k = 0;
-	while (i <= j)
-		trim[k++] = source[i++];
-	trim[k] = '\0';
-	free(source);
+	ptr = trim;
+	while (start <= end)
+		*ptr++ = *start++;
+	*ptr = '\0';
 	return (trim);
 }
 
