@@ -10,4 +10,38 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
 
+/* @function	ft_split - split string by delimiter c
+ * @params		
+ * @brief		Allocates with malloc.
+ * @return		
+ */
+char	**ft_split(char const *s, char c)
+{
+	int 	size;
+	char	**array;
+	int		i;
+
+	size = get_size(s, c);
+	array = malloc(size * sizeof(char *));
+	if (!array)
+		return (NULL);
+
+}
+
+int	get_size(char const *s, char c)
+{
+	int	size;
+	int	i;
+
+	while (*s)
+	{
+		if (*s == c)
+			size++;
+			i = 0;
+		s++;
+	}
+	size++;
+	return (size);
+}
