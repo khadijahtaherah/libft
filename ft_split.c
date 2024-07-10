@@ -12,36 +12,36 @@
 
 #include "libft.h"
 
+int	get_element(char const *s, char c);
+
 /* @function	ft_split - split string by delimiter c
  * @params		
  * @brief		Allocates with malloc.
- * @return		
+ * @return		\
  */
 char	**ft_split(char const *s, char c)
 {
-	int 	size;
+	int		element;
 	char	**array;
-	int		i;
 
-	size = get_size(s, c);
-	array = malloc(size * sizeof(char *));
+	element = get_element(s, c);
+	array = malloc(element * sizeof(char *));
 	if (!array)
 		return (NULL);
-
+	return (array);
 }
 
-int	get_size(char const *s, char c)
+int	get_element(char const *s, char c)
 {
-	int	size;
-	int	i;
+	int	element;
 
+	element = 0;
 	while (*s)
 	{
 		if (*s == c)
-			size++;
-			i = 0;
+			element++;
 		s++;
 	}
-	size++;
-	return (size);
+	element++;
+	return (element);
 }
