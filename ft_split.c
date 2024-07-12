@@ -31,7 +31,7 @@ char	**ft_split(char const *s, char c)
 	strcpy(buffer, s)
 
 	element = get_element(s, c);
-	array = malloc(element * sizeof(char *));
+	array = malloc((element + 1) * sizeof(char *));
 	if (!array)
 		return (NULL);
 	set_size(buffer, array, c, element);
@@ -96,6 +96,7 @@ void	fill_word(char *s, char **array, char c, int element)
 		j = 0;
 		while (s[k] != c && s[k])
 			array[i][j++] = s[k++];
+		array[i][j] = '\0';
 		i++;
 		k++; //skip c
 	}
