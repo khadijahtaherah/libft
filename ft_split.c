@@ -31,7 +31,7 @@ char	**ft_split(char const *s, char c)
 	strcpy(buffer, s);
 
 	element = get_element(s, c);
-	array = malloc((element + 1) * sizeof(char *));
+	array = malloc(element * sizeof(char *));
 	if (!array)
 		return (NULL);
 	set_size(buffer, array, c, element);
@@ -78,7 +78,8 @@ void	set_size(char *s, char **array, char c, int element)
 			return (NULL);
 		i++;
 		end++; //skip c
-		s++; //skip c
+		if (*s)
+			s++; //skip c
 		start = end;
 	}
 }
