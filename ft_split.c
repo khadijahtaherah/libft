@@ -73,6 +73,8 @@ void	setsize(char *s, char **array, char c, int element)
 		}
 		size = end - start + 1;
 		array[i] = malloc(size * sizeof(char));
+		if (!array[i])
+			return (NULL);
 		i++;
 		end++; //skip c
 		s++; //skip c
