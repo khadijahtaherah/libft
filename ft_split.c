@@ -34,7 +34,8 @@ char	**ft_split(char const *s, char c)
 	array = malloc(element * sizeof(char *));
 	if (!array)
 		return (NULL);
-	setsize(buffer, array, c, element);
+	set_size(buffer, array, c, element);
+	fill_word(buffer, array, c, element);
 	free(buffer);
 	return (array);
 }
@@ -54,7 +55,7 @@ int	get_element(char const *s, char c)
 	return (element);
 }
 
-void	setsize(char *s, char **array, char c, int element)
+void	set_size(char *s, char **array, char c, int element)
 {
 	int start;
 	int end;
@@ -79,5 +80,23 @@ void	setsize(char *s, char **array, char c, int element)
 		end++; //skip c
 		s++; //skip c
 		start = end;
+	}
+}
+
+void	fill_word(char *s, char **array, char c, int element)
+{
+	int i;
+	int j;
+	int k;
+
+	i = 0;
+	k = 0;
+	while (i < element)
+	{
+		j = 0;
+		while (s[k] != c && s[k])
+			array[i][j++] = s[k++];
+		i++;
+		k++; //skip c
 	}
 }
