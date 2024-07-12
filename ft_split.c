@@ -23,11 +23,19 @@ char	**ft_split(char const *s, char c)
 {
 	int		element;
 	char	**array;
+	char	*buffer
+
+	buffer = malloc((strlen(s) + 1) * sizeof(char));
+	if (!buffer)
+		return (NULL);
+	strcpy(buffer, s)
 
 	element = get_element(s, c);
 	array = malloc(element * sizeof(char *));
 	if (!array)
 		return (NULL);
+	setsize(buffer, array, c, element);
+	free(buffer);
 	return (array);
 }
 
@@ -44,4 +52,30 @@ int	get_element(char const *s, char c)
 	}
 	element++;
 	return (element);
+}
+
+void	setsize(char *s, char **array, char c, int element)
+{
+	int start;
+	int end;
+	int size;
+	int	i;
+
+	start = 0;
+	end = 0;
+	i = 0;
+	while (i < element)
+	{
+		while (*s != c && *s)
+		{
+			end++;
+			s++;
+		}
+		size = end - start + 1;
+		array[i] = malloc(size * sizeof(char));
+		i++;
+		end++; //skip c
+		s++; //skip c
+		start = end;
+	}
 }
