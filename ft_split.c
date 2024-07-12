@@ -23,12 +23,12 @@ char	**ft_split(char const *s, char c)
 {
 	int		element;
 	char	**array;
-	char	*buffer
+	char	*buffer;
 
 	buffer = malloc((strlen(s) + 1) * sizeof(char));
 	if (!buffer)
 		return (NULL);
-	strcpy(buffer, s)
+	strcpy(buffer, s);
 
 	element = get_element(s, c);
 	array = malloc((element + 1) * sizeof(char *));
@@ -100,4 +100,28 @@ void	fill_word(char *s, char **array, char c, int element)
 		i++;
 		k++; //skip c
 	}
+}
+
+int main()
+{
+	const char *s = "Hello,World,Split,Example";
+    char **result = ft_split(s, ',');
+
+    if (result) {
+        // Print each element in the array
+        for (int i = 0; result[i] != NULL; i++) {
+            printf("%s\n", result[i]);
+        }
+
+        // Free allocated memory
+        for (int i = 0; result[i] != NULL; i++) {
+            free(result[i]);
+        }
+        free(result);
+    } else {
+        printf("Memory allocation failed.\n");
+    }
+
+    return 0;
+
 }
