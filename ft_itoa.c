@@ -34,17 +34,19 @@ char	*ft_itoa(int n)
 
 int		count_digit(int n)
 {
-	int	count;
+	long	nbl;
+	int		count;
 
+	nbl = (long)n;
 	count = 0;
-	if (n < 0)
+	if (nbl < 0)
 	{
 		count++;
-		n = -n;
+		nbl = -nbl;
 	}
-	while (n > 0)
+	while (nbl > 0)
 	{
-		n /= 10;
+		nbl /= 10;
 		count++;
 	}
 	return (count);
