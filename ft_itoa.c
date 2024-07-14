@@ -22,22 +22,22 @@ char	*ft_itoa(int n)
 {
 	char	*string;
 	int 	len;
+	long	nbl;
 
-	len = count_digit(n);
+	nbl = (long)n;
+	len = count_digit(nbl);
 	string = malloc ((len + 1) * sizeof(char));
 	if (!string)
 		return (NULL);
-	ft_putnbr(string, n);
+	ft_putnbr(string, nbl);
 	string[len] = '\0';
 	return (string);
 }
 
-int		count_digit(int n)
+int		count_digit(long nbl)
 {
-	long	nbl;
 	int		count;
 
-	nbl = (long)n;
 	count = 0;
 	if (nbl < 0)
 	{
@@ -52,13 +52,11 @@ int		count_digit(int n)
 	return (count);
 }
 
-char	*ft_putnbr(char *s, int n)
+char	*ft_putnbr(char *s, long nbl)
 {
 	char	*num;
-	long	nbl;
 
 	num = "0123456789";
-	nbl = (long)n;
 	if (nbl < 0)
 	{
 		*s = '-';
@@ -74,14 +72,14 @@ char	*ft_putnbr(char *s, int n)
 	*s++ = (char)(nbl + '0');
 	return (s);
 }
-
+/*
 int	main(void)
 {
 	char	*s;
 
-	s = ft_itoa(-214);
+	s = ft_itoa(-2147483648);
 	printf("%s\n", s);
-	//s = ft_itoa(214);
-	//printf("%s\n", s);
+	s = ft_itoa(2147483647);
+	printf("%s\n", s);
 	return (0);
-}
+}*/
