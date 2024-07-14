@@ -28,6 +28,7 @@ char	*ft_itoa(int n)
 	if (!string)
 		return (NULL);
 	ft_putnbr(string, n);
+	string[len] = '\0';
 	return (string);
 }
 
@@ -37,7 +38,10 @@ int		count_digit(int n)
 
 	count = 0;
 	if (n < 0)
+	{
 		count++;
+		n = -n;
+	}
 	while (n > 0)
 	{
 		n /= 10;
@@ -60,9 +64,12 @@ char	*ft_putnbr(char *s, int n)
 		nbl = -nbl;
 	}
 	if (nbl > 9)
-		ft_putnbr(s, nbl / 10);
-	*s++ = (nbl % 10) + '0';
-	*s = '\0';
+	{
+		s = ft_putnbr(s, nbl / 10);
+		*s++ = num[nbl % 10];
+		return (s);
+	}
+	*s++ = (char)(nbl + '0');
 	return (s);
 }
 
