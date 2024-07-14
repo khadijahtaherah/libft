@@ -39,7 +39,7 @@ int		count_digit(long nbl)
 	int		count;
 
 	count = 0;
-	if (nbl < 0)
+	if (nbl <= 0)
 	{
 		count++;
 		nbl = -nbl;
