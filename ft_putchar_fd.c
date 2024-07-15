@@ -10,4 +10,15 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
 
+/* @function    ft_putchar_fd - Output char to file descriptor
+   @params      c: The character to output
+				fd: The file descriptor on which to write
+   @brief		Outputs the character ’c’ to the given file descriptor
+   @return		None
+*/
+void	ft_putchar_fd(char c, int fd)
+{
+	write(fd, &c, 1);
+}
