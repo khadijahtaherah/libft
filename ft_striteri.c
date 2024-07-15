@@ -10,4 +10,17 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
 
+/* @function    ft_striteri - Apply function 'f' to each char in string 's'
+   @params      s: The string on which to iterate
+                f: The function to apply to each character
+   @brief       Applies the function ’f’ on each character of the string passed
+                as argument, passing its index as first argument. Each char is 
+                passed by address to ’f’ to be modified if necessary.
+   @return      None
+*/
+void    ft_striteri(char *s, void (*f)(unsigned int, char*))
+{
+
+}
