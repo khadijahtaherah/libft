@@ -31,11 +31,13 @@ char	**ft_split(char const *s, char c)
 	strcpy(buffer, s);
 
 	element = get_element(s, c);
-	array = malloc(element * sizeof(char *));
+	array = malloc((element + 1) * sizeof(char *));
 	if (!array)
 		return (NULL);
-	set_size(buffer, array, c, element);
+	if (!set_size(buffer, array, c, element))
+		return (NULL);
 	fill_word(buffer, array, c, element);
+	array[element] = NULL:
 	free(buffer);
 	return (array);
 }
@@ -75,13 +77,14 @@ void	set_size(char *s, char **array, char c, int element)
 		size = end - start + 1;
 		array[i] = malloc(size * sizeof(char));
 		if (!array[i])
-			return (NULL);
+			return (0);
 		i++;
 		end++; //skip c
 		if (*s)
 			s++; //skip c
 		start = end;
 	}
+	return (1);
 }
 
 void	fill_word(char *s, char **array, char c, int element)
@@ -122,7 +125,5 @@ int main()
     } else {
         printf("Memory allocation failed.\n");
     }
-
     return 0;
-
 }
