@@ -35,7 +35,7 @@ files 	   = ft_strlen \
 			 ft_putendl_fd \
 			 ft_putnbr_fd \
 
-Compiler= gcc
+CC 		= gcc
 
 CFLAGS	= -Wall -Wextra -Werror
 
@@ -44,7 +44,7 @@ CFILES	= $(files:%=%.c)
 OFILES	= $(files:%=%.o)
 
 $(NAME):
-	$(Compiler) $(CFLAGS) -c $(CFILES) -I./
+	$(CC) $(CFLAGS) -c $(CFILES) -I./
 	ar -rc $(OUTN) $(OFILES)
 
 all: $(NAME)
