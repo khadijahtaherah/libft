@@ -45,7 +45,7 @@ OFILES	= $(files:%=%.o)
 
 $(NAME):
 	$(CC) $(CFLAGS) -c $(CFILES) -I./
-	ar -rc $(OUTN) $(OFILES)
+	ar -rc $(NAME) $(OFILES)
 
 all: $(NAME)
 
