@@ -12,20 +12,22 @@
 
 #include "libft.h"
 
-/* @function  ft_strchr
+/* @function	ft_strchr
  * @params		s: string given, c: character to search for
- * @brief		  Locate the first occurrence of c in the string pointed to by s
+ * @brief		Locate the first occurrence of c in the string pointed to by s
  * @return		A pointer to the first occurrence of c in the string s
- * 				    NULL if c is not found
+ *				NULL if c is not found
  */
-char	*ft_strchr(const char *s, int c)
+char	*ft_strchr(char *s, int c)
 {
-	while (*s || *s == c)
+	while (*s)
 	{
 		if (*s == (char)c)
-			return ((char *)s);
+			return (s);
 		s++;
 	}
+	if ((char)c == *s)
+		return (s);
 	return (NULL);
 }
 /*

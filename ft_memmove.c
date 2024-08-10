@@ -23,6 +23,8 @@ void	*ft_memmove(void *dest, const void *src, size_t n)
 {
 	char	*buffer;
 
+	if (dest == (void *)0 && src == (void *)0)
+		return (dest);
 	buffer = (char *)dest;
 	if (dest < src)
 	{

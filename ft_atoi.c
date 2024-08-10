@@ -10,12 +10,13 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
 /* @function	ft_atoi
  * @params		str - string
  * @brief		Converts string pointed by str to int
  * @return		Int type of the str. For invalid conversion, return zero
  */
-int	ft_atoi(char *str)
+int	ft_atoi(const char *str)
 {
 	int	i;
 	int	sign;

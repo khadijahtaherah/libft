@@ -12,115 +12,101 @@
 
 #include "libft.h"
 
+static int	word_count(const char *str, char c);
+static char	*fill_word(const char *str, int start, int end);
+static void	*ft_free(char **strs, int count);
+static void	ft_initiate_vars(size_t *i, int *j, int *s_word);
+
 /* @function	ft_split - split string by delimiter c
- * @params		
+ * @params		s: input string, c: delimiter
  * @brief		Allocates with malloc.
- * @return		\
+ * @return		array of splitted strings
  */
-char	**ft_split(char const *s, char c)
+char	**ft_split(const char *s, char c)
 {
-	int		element;
-	char	**array;
-	char	*buffer;
+	char	**res;
+	size_t	i;
+	int		j;
+	int		s_word;
 
-	buffer = malloc((strlen(s) + 1) * sizeof(char));
-	if (!buffer)
+	ft_initiate_vars(&i, &j, &s_word);
+	res = ft_calloc((word_count(s, c) + 1), sizeof(char *));
+	if (!res)
 		return (NULL);
-	strcpy(buffer, s);
-	element = get_element(s, c);
-	array = malloc((element + 1) * sizeof(char *));
-	if (!array)
-		return (NULL);
-	if (!set_size(buffer, array, c, element))
-		return (NULL);
-	fill_word(buffer, array, c, element);
-	array[element] = NULL;
-	free(buffer);
-	return (array);
-}
-
-int	get_element(char const *s, char c)
-{
-	int	element;
-
-	element = 0;
-	while (*s)
+	while (i <= ft_strlen(s))
 	{
-		if (*s == c)
-			element++;
-		s++;
+		if (s[i] != c && s_word < 0)
+			s_word = i;
+		else if ((s[i] == c || i == ft_strlen(s)) && s_word >= 0)
+		{
+			res[j] = fill_word(s, s_word, i);
+			if (!(res[j]))
+				return (ft_free(res, j));
+			s_word = -1;
+			j++;
+		}
+		i++;
 	}
-	element++;
-	return (element);
+	return (res);
 }
 
-int	set_size(char *s, char **array, char c, int element)
+static void	ft_initiate_vars(size_t *i, int *j, int *s_word)
 {
-	int	start;
-	int	end;
-	int	size;
+	*i = 0;
+	*j = 0;
+	*s_word = -1;
+}
+
+static void	*ft_free(char **strs, int count)
+{
 	int	i;
 
-	start = 0;
-	end = 0;
 	i = 0;
-	while (i < element)
+	while (i < count)
 	{
-		while (*s != c && *s)
+		free(strs[i]);
+		i++;
+	}
+	free(strs);
+	return (NULL);
+}
+
+static char	*fill_word(const char *str, int start, int end)
+{
+	char	*word;
+	int		i;
+
+	i = 0;
+	word = malloc((end - start + 1) * sizeof(char));
+	if (!word)
+		return (NULL);
+	while (start < end)
+	{
+		word[i] = str[start];
+		i++;
+		start++;
+	}
+	word[i] = 0;
+	return (word);
+}
+
+static int	word_count(const char *str, char c)
+{
+	int	count;
+	int	x;
+
+	count = 0;
+	x = 0;
+	while (*str)
+	{
+		if (*str != c && x == 0)
 		{
-			end++;
-			s++;
+			x = 1;
+			count++;
 		}
-		size = end - start + 1;
-		array[i] = malloc(size * sizeof(char));
-		if (!array[i])
-			return (0);
-		i++;
-		end++;
-		if (*s)
-			s++;
-		start = end;
+		else if (*str == c)
+			x = 0;
+		str++;
 	}
-	return (1);
+	return (count);
 }
-
-void	fill_word(char *s, char **array, char c, int element)
-{
-	int i;
-	int j;
-	int k;
-
-	i = 0;
-	k = 0;
-	while (i < element)
-	{
-		j = 0;
-		while (s[k] != c && s[k])
-			array[i][j++] = s[k++];
-		array[i][j] = '\0';
-		i++;
-		k++;
-	}
-}
-/*
-int main()
-{
-	const char *s = "Hello,World,Split,Example";
-    char **result = ft_split(s, ',');
-
-    if (result) {
-        // Print each element in the array
-        for (int i = 0; result[i] != NULL; i++) {
-            printf("%s\n", result[i]);
-        }
-
-        // Free allocated memory
-        for (int i = 0; result[i] != NULL; i++) {
-            free(result[i]);
-        }
-        free(result);
-    } else {
-        printf("Memory allocation failed.\n");
-    }
-    return 0;
-}*/

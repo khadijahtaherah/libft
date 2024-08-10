@@ -12,6 +12,9 @@
 
 #include "libft.h"
 
+static int	count_digit(long nbl);
+static char	*ft_putnbr(char *s, long nbl);
+
 /* @function	ft_itoa - Convert integer to string
    @params		n: the integer to convert
    @brief		Allocates with malloc. Returns a string representing the int.
@@ -35,7 +38,7 @@ char	*ft_itoa(int n)
 	return (string);
 }
 
-int	count_digit(long nbl)
+static int	count_digit(long nbl)
 {
 	int		count;
 
@@ -53,7 +56,7 @@ int	count_digit(long nbl)
 	return (count);
 }
 
-char	*ft_putnbr(char *s, long nbl)
+static char	*ft_putnbr(char *s, long nbl)
 {
 	char	*num;
 

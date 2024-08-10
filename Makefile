@@ -1,5 +1,18 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: skhairul <skhairul@student.42kl.edu.my>    +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2024/08/10 20:38:46 by skhairul          #+#    #+#              #
+#    Updated: 2024/08/10 20:38:51 by skhairul         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
 NAME	   = libft.a
 
+# Regular files
 files 	   = ft_isalpha \
 			 ft_isdigit \
 			 ft_isalnum \
@@ -34,30 +47,45 @@ files 	   = ft_isalpha \
 			 ft_putstr_fd \
 			 ft_putendl_fd \
 			 ft_putnbr_fd \
-			 
 
+# Bonus files
+bonus_files = ft_lstnew
 
-CC 		= gcc
+# Compiler flags
+CC      = gcc
+CFLAGS  = -Wall -Wextra -Werror
 
-CFLAGS	= -Wall -Wextra -Werror
+# Convert file names to .c and .o files
+CFILES  = $(files:%=%.c)
+OFILES  = $(files:%=%.o)
+B_CFILES = $(bonus_files:%=%.c)
+B_OFILES = $(bonus_files:%=%.o)
 
-CFILES	= $(files:%=%.c)
-
-OFILES	= $(files:%=%.o)
-
-$(NAME):
-	$(CC) $(CFLAGS) -c $(CFILES) -I./
+# Build the library
+$(NAME): $(OFILES)
 	ar -rc $(NAME) $(OFILES)
 
+# Compile all .c files (including bonus)
 all: $(NAME)
 
-clean:
-	rm -f $(NAME)
-	rm -f $(OFILES)
+# Compile bonus files and include them in the library
+bonus: $(OFILES) $(B_OFILES)
+	ar -rc $(NAME) $(OFILES) $(B_OFILES)
 
+# Compile .c files to .o files
+%.o: %.c
+	$(CC) $(CFLAGS) -c $< -o $@ -I./
+
+# Clean up object files
+clean:
+	rm -f $(OFILES) $(B_OFILES)
+
+# Clean everything
 fclean: clean
 	rm -f $(NAME)
 
+# Rebuild everything from scratch
 re: fclean all
 
-.PHONY: all, clean, fclean, re
+# Declare rules that are not files
+.PHONY: all clean fclean re bonus

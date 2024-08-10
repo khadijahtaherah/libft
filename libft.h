@@ -13,16 +13,24 @@
 /* Include guard */
 
 #ifndef LIBFT_H
-#define	LIBFT_H
+# define LIBFT_H
 
 // INCLUDES
 
-#include <unistd.h>
-#include <stdio.h>
-#include <stddef.h>
-#include <stdlib.h>
-#include <string.h>
-#include <limits.h>
+# include <unistd.h>
+# include <stdio.h>
+# include <stddef.h>
+# include <stdlib.h>
+# include <string.h>
+# include <limits.h>
+
+// STRUCTURES
+
+typedef struct s_list
+{
+	void			*content;
+	struct s_list	*next;
+}	t_list;
 
 // FUNCTION PROTOTYPES
 
@@ -44,7 +52,7 @@ size_t	ft_strlen(const char *s);
 size_t	ft_strlcat(char *dest, const char *src, size_t dstsize);
 size_t	ft_strlcpy(char *dest, const char *src, size_t dstsize);
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
-char	*ft_strchr(const char *s, int c);
+char	*ft_strchr(char *s, int c);
 char	*ft_strrchr(char *s, int c);
 char	*ft_strnstr(const char *haystack, const char *needle, size_t len);
 char	*ft_strdup(const char *s1);
@@ -61,14 +69,7 @@ void	ft_putstr_fd(char *s, int fd);
 void	ft_putendl_fd(char *s, int fd);
 void	ft_putnbr_fd(int n, int fd);
 
-// ADDITIONAL FUNCTIONS
-int		count_digit(long nbl);
-char	*ft_putnbr(char *s, long nbl);
-int		isset(char const *set, int c);
-int		get_element(char const *s, char c);
-int		set_size(char *s, char **array, char c, int element);
-void	fill_word(char *s, char **array, char c, int element);
-int		count_digit(long nbl);
-char	*ft_putnbr(char *s, long nbl);
+// BONUS FUNCTIONS
+t_list	*ft_lstnew(void *content);
 
 #endif

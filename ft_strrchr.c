@@ -30,7 +30,7 @@ char	*ft_strrchr(char *s, int c)
 			last_c = s;
 		s++;
 	}
-	if (c == 0)
+	if ((char)c == *s)
 		return (s);
 	return (last_c);
 }

@@ -12,6 +12,8 @@
 
 #include "libft.h"
 
+static int	isset(char const *set, int c);
+
 /* @function	ft_strtrim - trim set characters from main string
  * @params		s1: string to be trimmed, set: set of characters to trim
  * @brief		Allocates with malloc. Trim s1 with the characters specified in
@@ -41,7 +43,7 @@ char	*ft_strtrim(char const *s1, char const *set)
 	return (trim);
 }
 
-int	isset(char const *set, int c)
+static int	isset(char const *set, int c)
 {
 	while (*set)
 	{
