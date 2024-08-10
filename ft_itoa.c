@@ -10,6 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
 
 /* @function	ft_itoa - Convert integer to string
    @params		n: the integer to convert
@@ -21,7 +22,7 @@
 char	*ft_itoa(int n)
 {
 	char	*string;
-	int 	len;
+	int		len;
 	long	nbl;
 
 	nbl = (long)n;
@@ -34,7 +35,7 @@ char	*ft_itoa(int n)
 	return (string);
 }
 
-int		count_digit(long nbl)
+int	count_digit(long nbl)
 {
 	int		count;
 

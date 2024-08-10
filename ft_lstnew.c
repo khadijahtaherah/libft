@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_lstnew.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: skhairul <skhairul@student.42kl.edu.my>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/08/10 16:21:07 by skhairul          #+#    #+#             */
+/*   Updated: 2024/08/10 16:21:10 by skhairul         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 
 /* @function	ft_lstnew
@@ -8,12 +20,12 @@
    @return		The new struct node
 */
 
-t_list *ft_lstnew(void *content)
+t_list	*ft_lstnew(void *content)
 {
 	t_list	*node;
 
 	node = malloc(sizeof(t_list));
-	if(!node)
+	if (!node)
 		return (NULL);
 	node->content = content;
 	node->next = NULL;

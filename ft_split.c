@@ -12,8 +12,6 @@
 
 #include "libft.h"
 
-int	get_element(char const *s, char c);
-
 /* @function	ft_split - split string by delimiter c
  * @params		
  * @brief		Allocates with malloc.
@@ -29,7 +27,6 @@ char	**ft_split(char const *s, char c)
 	if (!buffer)
 		return (NULL);
 	strcpy(buffer, s);
-
 	element = get_element(s, c);
 	array = malloc((element + 1) * sizeof(char *));
 	if (!array)
@@ -37,7 +34,7 @@ char	**ft_split(char const *s, char c)
 	if (!set_size(buffer, array, c, element))
 		return (NULL);
 	fill_word(buffer, array, c, element);
-	array[element] = NULL:
+	array[element] = NULL;
 	free(buffer);
 	return (array);
 }
@@ -57,11 +54,11 @@ int	get_element(char const *s, char c)
 	return (element);
 }
 
-void	set_size(char *s, char **array, char c, int element)
+int	set_size(char *s, char **array, char c, int element)
 {
-	int start;
-	int end;
-	int size;
+	int	start;
+	int	end;
+	int	size;
 	int	i;
 
 	start = 0;
@@ -79,9 +76,9 @@ void	set_size(char *s, char **array, char c, int element)
 		if (!array[i])
 			return (0);
 		i++;
-		end++; //skip c
+		end++;
 		if (*s)
-			s++; //skip c
+			s++;
 		start = end;
 	}
 	return (1);
@@ -102,10 +99,10 @@ void	fill_word(char *s, char **array, char c, int element)
 			array[i][j++] = s[k++];
 		array[i][j] = '\0';
 		i++;
-		k++; //skip c
+		k++;
 	}
 }
-
+/*
 int main()
 {
 	const char *s = "Hello,World,Split,Example";
@@ -126,4 +123,4 @@ int main()
         printf("Memory allocation failed.\n");
     }
     return 0;
-}
+}*/

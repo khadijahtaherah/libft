@@ -22,20 +22,20 @@
    @return      The string created from the successive applications of ’f’. 
                 NULL if the allocation fails
 */
-char    *ft_strmapi(char const *s, char (*f)(unsigned int, char))
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-    char            *str;
-    unsigned int    i;
+	char			*str;
+	unsigned int	i;
 
-    str = malloc((ft_strlen(s) + 1) * sizeof(char));
-    if(!str)
-        return (NULL);
-    i = 0;
-    while (s[i])
-    {
-        str[i] = f(i, s[i]);
-        i++;
-    }
-    str[i] = '\0';
-    return (str);
+	str = malloc((ft_strlen(s) + 1) * sizeof(char));
+	if (!str)
+		return (NULL);
+	i = 0;
+	while (s[i])
+	{
+		str[i] = f(i, s[i]);
+		i++;
+	}
+	str[i] = '\0';
+	return (str);
 }
