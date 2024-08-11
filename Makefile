@@ -49,7 +49,10 @@ files 	   = ft_isalpha \
 			 ft_putnbr_fd \
 
 # Bonus files
-bonus_files = ft_lstnew
+bonus_files = ft_lstnew \
+			  ft_lstadd_front \
+			  ft_lstsize \
+			  ft_lstlast \
 
 # Compiler flags
 CC      = gcc

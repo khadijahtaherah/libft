@@ -12,101 +12,95 @@
 
 #include "libft.h"
 
-static int	word_count(const char *str, char c);
-static char	*fill_word(const char *str, int start, int end);
-static void	*ft_free(char **strs, int count);
-static void	ft_initiate_vars(size_t *i, int *j, int *s_word);
-
 /* @function	ft_split - split string by delimiter c
  * @params		s: input string, c: delimiter
  * @brief		Allocates with malloc.
  * @return		array of splitted strings
  */
-char	**ft_split(const char *s, char c)
-{
-	char	**res;
-	size_t	i;
-	int		j;
-	int		s_word;
-
-	ft_initiate_vars(&i, &j, &s_word);
-	res = ft_calloc((word_count(s, c) + 1), sizeof(char *));
-	if (!res)
-		return (NULL);
-	while (i <= ft_strlen(s))
-	{
-		if (s[i] != c && s_word < 0)
-			s_word = i;
-		else if ((s[i] == c || i == ft_strlen(s)) && s_word >= 0)
-		{
-			res[j] = fill_word(s, s_word, i);
-			if (!(res[j]))
-				return (ft_free(res, j));
-			s_word = -1;
-			j++;
-		}
-		i++;
-	}
-	return (res);
-}
-
-static void	ft_initiate_vars(size_t *i, int *j, int *s_word)
-{
-	*i = 0;
-	*j = 0;
-	*s_word = -1;
-}
-
-static void	*ft_free(char **strs, int count)
-{
-	int	i;
-
-	i = 0;
-	while (i < count)
-	{
-		free(strs[i]);
-		i++;
-	}
-	free(strs);
-	return (NULL);
-}
-
-static char	*fill_word(const char *str, int start, int end)
-{
-	char	*word;
-	int		i;
-
-	i = 0;
-	word = malloc((end - start + 1) * sizeof(char));
-	if (!word)
-		return (NULL);
-	while (start < end)
-	{
-		word[i] = str[start];
-		i++;
-		start++;
-	}
-	word[i] = 0;
-	return (word);
-}
-
-static int	word_count(const char *str, char c)
+static int	word_count(char const *s, char c)
 {
 	int	count;
-	int	x;
+	int	in_word;
 
 	count = 0;
-	x = 0;
-	while (*str)
+	in_word = 0;
+	while (*s)
 	{
-		if (*str != c && x == 0)
+		if (*s != c && !in_word)
 		{
-			x = 1;
+			in_word = 1;
 			count++;
 		}
-		else if (*str == c)
-			x = 0;
-		str++;
+		else if (*s == c && in_word)
+			in_word = 0;
+		s++;
 	}
 	return (count);
 }
+
+static int	word_len(char const *s, char c)
+{
+	int	len;
+
+	len = 0;
+	while (s[len] && s[len] != c)
+		len++;
+	return (len);
+}
+
+static int	fill_array(char **split, char const *s, char c)
+{
+	int	i;
+	int	len;
+
+	i = 0;
+	while (*s)
+	{
+		while (*s == c)
+			s++;
+		if (*s == '\0')
+			break ;
+		len = word_len(s, c);
+		split[i] = malloc(sizeof(char) * (len + 1));
+		if (!split[i])
+		{
+			while (i > 0)
+				free(split[--i]);
+			free(split);
+			return (0);
+		}
+		ft_memcpy(split[i], s, len);
+		split[i++][len] = '\0';
+		s += len;
+	}
+	split[i] = NULL;
+	return (1);
+}
+
+// Main function to split the string
+char	**ft_split(char const *s, char c)
+{
+	char	**split;
+	int		count;
+
+	if (!s)
+		return (NULL);
+	count = word_count(s, c);
+	split = malloc(sizeof(char *) * (count + 1));
+	if (!split)
+		return (NULL);
+	if (!fill_array(split, s, c))
+		return (NULL);
+	return (split);
+}
+/*
+#include <stdio.h>
+
+int main()
+{
+	const char *s = "@hel@@bye@ok";
+	char c = '@';
+
+	printf("size = %d\n", word_count(s, c));
+	return 0;
+}*/
